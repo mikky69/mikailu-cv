@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy-900: #071525;
+  --navy-800: #0b1f3a;
+  --navy-700: #102848;
+  --gold-500: #c49a2a;
+  --gold-400: #d4a940;
+  --steel-400: #6b9ec7;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Barlow", sans-serif;
+  background-color: #f4f6f9;
+}
+
+/* ─── Custom Scrollbar ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f4f6f9; }
+::-webkit-scrollbar-thumb { background: #c49a2a; border-radius: 3px; }
+
+/* ─── Blueprint grid texture for sidebar ─── */
+.blueprint-texture {
+  background-image:
+    linear-gradient(rgba(107,158,199,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(107,158,199,0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ─── Section fade-in ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.45s ease-out forwards; }
+
+/* ─── Skill bar animation ─── */
+@keyframes growBar {
+  from { width: 0%; }
+  to   { width: var(--bar-width); }
+}
+.skill-bar { animation: growBar 1s ease-out forwards; }
+
+/* ─── Timeline line ─── */
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: 8px;
+  width: 10px;
+  height: 10px;
+  background: #c49a2a;
+  border-radius: 50%;
+  border: 2px solid #0b1f3a;
+  transform: translateX(-50%);
+}
+
+/* ─── Print styles ─── */
+@media print {
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  body { background: white !important; }
+  header.no-print, footer.no-print, .no-print { display: none !important; }
+  .cv-grid { display: flex !important; }
+  aside { width: 280px !important; flex-shrink: 0 !important; }
+  main   { flex: 1 !important; }
+  section { break-inside: avoid; }
+  .shadow-print { box-shadow: none !important; }
+}
