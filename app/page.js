@@ -1,292 +1,362 @@
+// app/page.js
 "use client";
 
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { useState } from "react";
+import { 
+  Mail, Phone, MapPin, Download, Linkedin, 
+  ExternalLink, CheckCircle, Building2, 
+  Hammer, GraduationCap, FileText, Award 
+} from "lucide-react";
 
 export default function CV() {
+  const [activeSection, setActiveSection] = useState("profile");
+
+  // Your profile image from portfolio - update path as needed
+  const profileImage = "https://engr-mikailu-portfolio.vercel.app/assets/profile.jpg"; 
+  // OR use GitHub raw: "https://raw.githubusercontent.com/mikky69/Engr-Mikailu-Portfolio-/main/assets/profile.jpg"
+
+  const sections = [
+    { id: "profile", label: "Profile", icon: <FileText size={16} /> },
+    { id: "experience", label: "Experience", icon: <Building2 size={16} /> },
+    { id: "projects", label: "Projects", icon: <Hammer size={16} /> },
+    { id: "education", label: "Education", icon: <GraduationCap size={16} /> },
+    { id: "certifications", label: "Certifications", icon: <Award size={16} /> },
+  ];
+
   return (
-    <div style={{ maxWidth: '900px', margin: '0 auto', background: 'white', padding: '2rem', fontFamily: 'Arial, sans-serif' }}>
-      <style jsx global>{`
-        body { background: #f3f4f6; margin: 0; padding: 20px; }
-        * { box-sizing: border-box; }
-      `}</style>
-      
-      {/* Header */}
-      <div style={{ borderBottom: '4px solid #1e3a8a', paddingBottom: '1rem', marginBottom: '1.5rem' }}>
-        <h1 style={{ fontSize: '2rem', fontWeight: 'bold', color: '#1e3a8a', marginBottom: '0.5rem' }}>
-          ENGR. MIKAILU SAMUEL NADRO
-        </h1>
-        <p style={{ fontSize: '1.125rem', color: '#374151', fontWeight: '600', marginBottom: '0.75rem' }}>
-          COREN Registered Civil / Structural Engineer
-        </p>
-        
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', fontSize: '0.875rem', color: '#4b5563' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
-            <span>📞</span>
-            <span>+234 812 826 4901 | +234 810 472 0061</span>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
-            <span>✉️</span>
-            <span>mikailu29@gmail.com</span>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
-            <span>📍</span>
-            <span>Yola, Adamawa State, Nigeria</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Professional Profile */}
-      <section style={{ marginBottom: '1.5rem' }}>
-        <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#1e3a8a', borderBottom: '2px solid #d1d5db', paddingBottom: '0.25rem', marginBottom: '0.75rem' }}>
-          PROFESSIONAL PROFILE
-        </h2>
-        <p style={{ color: '#374151', lineHeight: '1.6', textAlign: 'justify' }}>
-          COREN-registered Structural Engineer with comprehensive experience in structural design, construction 
-          supervision, and project management across residential, commercial, and estate-scale developments. 
-          Demonstrated expertise in reinforced concrete and steel structures, site execution, multidisciplinary 
-          coordination, and compliance with Nigerian engineering standards. Proven track record of delivering 
-          complex projects while maintaining high quality standards and meeting tight deadlines. Self-motivated 
-          professional with excellent communication, leadership, and team collaboration skills.
-        </p>
-      </section>
-
-      {/* Core Competencies */}
-      <section style={{ marginBottom: '1.5rem' }}>
-        <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#1e3a8a', borderBottom: '2px solid #d1d5db', paddingBottom: '0.25rem', marginBottom: '0.75rem' }}>
-          CORE COMPETENCIES
-        </h2>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
-          <ul style={{ color: '#374151', paddingLeft: '1.25rem' }}>
-            <li>Structural Analysis & Design</li>
-            <li>Reinforced Concrete & Steel Design</li>
-            <li>Construction Supervision & Site Management</li>
-            <li>Estate Layout & Site Planning</li>
-            <li>Foundation Design & Soil Investigation</li>
-          </ul>
-          <ul style={{ color: '#374151', paddingLeft: '1.25rem' }}>
-            <li>Project Coordination & Quality Control</li>
-            <li>Road Design & Infrastructure Development</li>
-            <li>Multidisciplinary Team Coordination</li>
-            <li>Compliance with Engineering Standards</li>
-            <li>Budget Management & Cost Control</li>
-          </ul>
-        </div>
-      </section>
-
-      {/* Engineering Software */}
-      <section style={{ marginBottom: '1.5rem' }}>
-        <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#1e3a8a', borderBottom: '2px solid #d1d5db', paddingBottom: '0.25rem', marginBottom: '0.75rem' }}>
-          ENGINEERING SOFTWARE PROFICIENCY
-        </h2>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
-          {['AutoCAD', 'Civil 3D', 'ProtaStructure', 'Revit', 'Tekla Structures (Steel)', 'Orion', 'Microsoft Office Suite'].map((software) => (
-            <span key={software} style={{ background: '#dbeafe', color: '#1e3a8a', padding: '0.25rem 0.75rem', borderRadius: '0.25rem', fontSize: '0.875rem', fontWeight: '500' }}>
-              {software}
-            </span>
-          ))}
-        </div>
-      </section>
-
-      {/* Professional Experience */}
-      <section style={{ marginBottom: '1.5rem' }}>
-        <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#1e3a8a', borderBottom: '2px solid #d1d5db', paddingBottom: '0.25rem', marginBottom: '0.75rem' }}>
-          PROFESSIONAL EXPERIENCE
-        </h2>
-        
-        <div style={{ marginBottom: '1rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.25rem' }}>
-            <h3 style={{ fontWeight: 'bold', color: '#1f2937' }}>Civil / Structural Engineer</h3>
-            <span style={{ color: '#4b5563', fontSize: '0.875rem' }}>2021 – 2022</span>
-          </div>
-          <p style={{ color: '#4b5563', fontStyle: 'italic', marginBottom: '0.5rem' }}>Under Engr. Ularam Bello</p>
-          <ul style={{ color: '#374151', paddingLeft: '1.25rem' }}>
-            <li>Supervised residential and commercial construction projects ensuring adherence to approved structural drawings</li>
-            <li>Conducted quality control inspections and ensured compliance with safety standards and building codes</li>
-            <li>Coordinated with contractors, architects, and other professionals for seamless project execution</li>
-            <li>Managed site activities and resolved technical challenges during construction phases</li>
-          </ul>
-        </div>
-
-        <div style={{ marginBottom: '1rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.25rem' }}>
-            <h3 style={{ fontWeight: 'bold', color: '#1f2937' }}>Lecturer, Civil Engineering Department</h3>
-            <span style={{ color: '#4b5563', fontSize: '0.875rem' }}>2022</span>
-          </div>
-          <p style={{ color: '#4b5563', fontStyle: 'italic', marginBottom: '0.5rem' }}>Modibbo Adama University, Yola</p>
-          <ul style={{ color: '#374151', paddingLeft: '1.25rem' }}>
-            <li>Delivered undergraduate courses in civil and structural engineering</li>
-            <li>Supervised academic projects and integrated industry-based case studies into curriculum</li>
-            <li>Mentored students on practical engineering applications and professional development</li>
-          </ul>
-        </div>
-
-        <div style={{ marginBottom: '1rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.25rem' }}>
-            <h3 style={{ fontWeight: 'bold', color: '#1f2937' }}>Site Engineer (SIWES/Industrial Training)</h3>
-            <span style={{ color: '#4b5563', fontSize: '0.875rem' }}>2016 – 2017</span>
-          </div>
-          <p style={{ color: '#4b5563', fontStyle: 'italic', marginBottom: '0.5rem' }}>Deluxe Engineering Nigeria Ltd.</p>
-          <ul style={{ color: '#374151', paddingLeft: '1.25rem' }}>
-            <li>Gained practical experience in construction site operations and structural implementation</li>
-            <li>Assisted in supervision of residential and commercial building projects</li>
-            <li>Participated in quality assurance activities and construction documentation</li>
-          </ul>
-        </div>
-
-        <div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.25rem' }}>
-            <h3 style={{ fontWeight: 'bold', color: '#1f2937' }}>National Youth Service Corps (NYSC)</h3>
-            <span style={{ color: '#4b5563', fontSize: '0.875rem' }}>March 2021 – February 2022</span>
-          </div>
-          <p style={{ color: '#4b5563', fontStyle: 'italic', marginBottom: '0.5rem' }}>Federal Ministry of Water Resources, Abuja</p>
-          <ul style={{ color: '#374151', paddingLeft: '1.25rem' }}>
-            <li>Contributed to irrigation and drainage infrastructure projects</li>
-            <li>Assisted in technical documentation and project planning activities</li>
-          </ul>
-        </div>
-      </section>
-
-      {/* Selected Projects */}
-      <section style={{ marginBottom: '1.5rem' }}>
-        <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#1e3a8a', borderBottom: '2px solid #d1d5db', paddingBottom: '0.25rem', marginBottom: '0.75rem' }}>
-          SELECTED STRUCTURAL & CONSTRUCTION PROJECTS
-        </h2>
-        
-        <div style={{ color: '#374151' }}>
-          <div style={{ marginBottom: '0.75rem' }}>
-            <p style={{ fontWeight: '600' }}>Large-Scale Estate Developments (2023 – 2025)</p>
-            <ul style={{ paddingLeft: '1.25rem', fontSize: '0.875rem' }}>
-              <li>Structural design of Hasiya Court Estate – 121 units of 4-bedroom duplexes with BQ (2025)</li>
-              <li>Structural design of Hilltop Hillcrest Estate, Katampe, Abuja – multiple duplex prototypes (2025)</li>
-              <li>Structural design of Rome Estate I & II for Dan Mama Smart Homes Ltd (2024)</li>
-              <li>Structural design of Boulevard Estate for Dan Mama Smart Homes Ltd (2023)</li>
-              <li>Dan Mama Smart City master planning, site layout, estate road design (2025)</li>
-            </ul>
-          </div>
-
-          <div style={{ marginBottom: '0.75rem' }}>
-            <p style={{ fontWeight: '600' }}>Residential & Commercial Projects (2021 – 2025)</p>
-            <ul style={{ paddingLeft: '1.25rem', fontSize: '0.875rem' }}>
-              <li>Hotel development supervision, Maraba, Nasarawa State – 12-bedroom hotel (2021)</li>
-              <li>Structural design & construction of terrace duplex (3 units), Anambra State (2025)</li>
-              <li>Structural design of Elm Villa duplex prototype for Dan Mama Smart Homes (2024)</li>
-              <li>Guest chalet, 2-bedroom BQ construction, Kabusa Garden Estate, Abuja (2021–2022)</li>
-              <li>Renovation supervision of twin blocks of flats, Karu, Abuja – 12 units (2021)</li>
-              <li>Structural design & supervision of 4-bedroom bungalow, Yola (2025)</li>
-            </ul>
-          </div>
-
-          <div style={{ marginBottom: '0.75rem' }}>
-            <p style={{ fontWeight: '600' }}>Specialized Infrastructure Projects (2025)</p>
-            <ul style={{ paddingLeft: '1.25rem', fontSize: '0.875rem' }}>
-              <li>Soil investigation for proposed girls' hostel, Modibbo Adama University, Yola</li>
-              <li>Reservoir structural design for Mayokila Water Factory, Yola</li>
-            </ul>
-          </div>
-
-          <div>
-            <p style={{ fontWeight: '600' }}>Academic Research Project (2020)</p>
-            <ul style={{ paddingLeft: '1.25rem', fontSize: '0.875rem' }}>
-              <li>Clay pot filtration system to remove heavy metals from drinking water</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* Education */}
-      <section style={{ marginBottom: '1.5rem' }}>
-        <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#1e3a8a', borderBottom: '2px solid #d1d5db', paddingBottom: '0.25rem', marginBottom: '0.75rem' }}>
-          EDUCATION
-        </h2>
-        <div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-            <div>
-              <p style={{ fontWeight: 'bold', color: '#1f2937' }}>Bachelor of Engineering (B.Eng.) in Civil Engineering</p>
-              <p style={{ color: '#4b5563' }}>Modibbo Adama University of Technology, Yola</p>
-              <p style={{ fontSize: '0.875rem', color: '#4b5563', fontStyle: 'italic' }}>Second Class Upper Division (Honours)</p>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+      {/* Header / Hero */}
+      <header className="bg-white shadow-sm border-b border-slate-200 sticky top-0 z-50">
+        <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <div className="w-14 h-14 rounded-full bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center text-white font-bold text-lg shadow-lg">
+              MN
             </div>
-            <span style={{ color: '#4b5563' }}>2020</span>
+            <div>
+              <h1 className="text-xl font-bold text-slate-900">Engr. Mikailu Samuel Nadro</h1>
+              <div className="flex items-center gap-2 text-sm text-blue-700 font-medium">
+                <CheckCircle size={14} />
+                <span>COREN Registered Structural Engineer</span>
+              </div>
+            </div>
           </div>
+          <button 
+            className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors shadow-sm"
+            onClick={() => window.print()}
+          >
+            <Download size={16} />
+            Download CV
+          </button>
+        </div>
+      </header>
+
+      <main className="max-w-6xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-4 gap-8">
+        
+        {/* Sidebar - Contact & Quick Info */}
+        <aside className="lg:col-span-1 space-y-6">
+          {/* Profile Card */}
+          <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 text-center">
+            <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center mb-4 overflow-hidden border-4 border-white shadow-lg">
+              {/* Replace with actual image */}
+              <span className="text-4xl font-bold text-blue-700">MN</span>
+              {/* <img src={profileImage} alt="Engr. Mikailu Nadro" className="w-full h-full object-cover" /> */}
+            </div>
+            <h2 className="font-bold text-lg text-slate-900">Mikailu S. Nadro</h2>
+            <p className="text-sm text-slate-600 mb-4">Civil / Structural Engineer</p>
+            
+            {/* Contact Info */}
+            <div className="space-y-3 text-left pt-4 border-t border-slate-100">
+              <a href="tel:+2348128264901" className="flex items-center gap-3 text-sm text-slate-700 hover:text-blue-600 transition-colors">
+                <Phone size={16} className="text-blue-600" />
+                +234 812 826 4901
+              </a>
+              <a href="mailto:mikailu29@gmail.com" className="flex items-center gap-3 text-sm text-slate-700 hover:text-blue-600 transition-colors">
+                <Mail size={16} className="text-blue-600" />
+                mikailu29@gmail.com
+              </a>
+              <div className="flex items-center gap-3 text-sm text-slate-700">
+                <MapPin size={16} className="text-blue-600 flex-shrink-0" />
+                <span>Yola, Adamawa State, Nigeria</span>
+              </div>
+            </div>
+
+            {/* Social Links */}
+            <div className="flex justify-center gap-3 pt-4">
+              <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" 
+                 className="p-2 rounded-lg bg-slate-100 hover:bg-blue-100 text-slate-600 hover:text-blue-600 transition-colors">
+                <Linkedin size={18} />
+              </a>
+              <a href="https://github.com/mikky69" target="_blank" rel="noopener noreferrer"
+                 className="p-2 rounded-lg bg-slate-100 hover:bg-blue-100 text-slate-600 hover:text-blue-600 transition-colors">
+                <ExternalLink size={18} />
+              </a>
+            </div>
+          </div>
+
+          {/* COREN Badge */}
+          <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-5 border border-amber-200">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-10 h-10 rounded-full bg-amber-500 flex items-center justify-center text-white font-bold text-sm">
+                C
+              </div>
+              <div>
+                <p className="font-semibold text-slate-900 text-sm">COREN Registered</p>
+                <p className="text-xs text-amber-700">Council for Regulation of Engineering in Nigeria</p>
+              </div>
+            </div>
+            <p className="text-xs text-slate-600">Registration: January 2025</p>
+          </div>
+
+          {/* Quick Navigation */}
+          <nav className="bg-white rounded-2xl shadow-sm border border-slate-200 p-4">
+            <ul className="space-y-1">
+              {sections.map((section) => (
+                <li key={section.id}>
+                  <button
+                    onClick={() => {
+                      setActiveSection(section.id);
+                      document.getElementById(section.id)?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${
+                      activeSection === section.id 
+                        ? 'bg-blue-50 text-blue-700 font-medium' 
+                        : 'text-slate-600 hover:bg-slate-50'
+                    }`}
+                  >
+                    {section.icon}
+                    {section.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </aside>
+
+        {/* Main Content */}
+        <section className="lg:col-span-3 space-y-8">
           
-          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <div>
-              <p style={{ fontWeight: 'bold', color: '#1f2937' }}>West African Senior School Certificate (WAEC)</p>
-              <p style={{ color: '#4b5563' }}>Yangal Academic, Jalingo</p>
+          {/* Professional Profile */}
+          <section id="profile" className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 scroll-mt-24">
+            <h2 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+              <FileText size={18} className="text-blue-600" />
+              Professional Profile
+            </h2>
+            <p className="text-slate-700 leading-relaxed">
+              COREN-registered Structural Engineer with comprehensive experience in structural design, 
+              construction supervision, and project management across residential, commercial, and 
+              estate-scale developments. Demonstrated expertise in reinforced concrete and steel structures, 
+              site execution, multidisciplinary coordination, and compliance with Nigerian engineering standards. 
+              Proven track record of delivering complex projects while maintaining high quality standards and 
+              meeting tight deadlines.
+            </p>
+          </section>
+
+          {/* Core Competencies */}
+          <section className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+            <h3 className="text-lg font-bold text-slate-900 mb-4">Core Competencies</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {[
+                "Structural Analysis & Design",
+                "Reinforced Concrete & Steel Design", 
+                "Construction Supervision & Site Management",
+                "Estate Layout & Site Planning",
+                "Foundation Design & Soil Investigation",
+                "Project Coordination & Quality Control",
+                "Road Design & Infrastructure Development",
+                "Multidisciplinary Team Coordination",
+                "Compliance with Engineering Standards",
+                "Budget Management & Cost Control"
+              ].map((skill) => (
+                <div key={skill} className="flex items-center gap-2 text-sm text-slate-700">
+                  <CheckCircle size={14} className="text-green-500 flex-shrink-0" />
+                  {skill}
+                </div>
+              ))}
             </div>
-            <span style={{ color: '#4b5563' }}>2014</span>
-          </div>
-        </div>
-      </section>
+          </section>
 
-      {/* Professional Registration */}
-      <section style={{ marginBottom: '1.5rem' }}>
-        <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#1e3a8a', borderBottom: '2px solid #d1d5db', paddingBottom: '0.25rem', marginBottom: '0.75rem' }}>
-          PROFESSIONAL REGISTRATION & CERTIFICATIONS
-        </h2>
-        <ul style={{ color: '#374151', paddingLeft: '1.25rem' }}>
-          <li><strong>COREN Registration</strong> – Council for the Regulation of Engineering in Nigeria (January 2025)</li>
-          <li><strong>Certificate of Participation in Decentralized Finance (DeFi)</strong> – University of Nicosia (2021)</li>
-          <li><strong>VeChain ToolChain Certificate</strong> – University of Nicosia, Cyprus (2020)</li>
-          <li><strong>Hedera Hashgraph Developer Certificate</strong> (2025)</li>
-          <li><strong>Unit Masters Certificate in Blockchain & Cryptocurrency</strong> (November 2022)</li>
-          <li><strong>Fundamentals of Digital Marketing</strong> – Google Digital Skills for Africa (2022)</li>
-        </ul>
-      </section>
+          {/* Software Proficiency */}
+          <section className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+            <h3 className="text-lg font-bold text-slate-900 mb-4">Engineering Software</h3>
+            <div className="flex flex-wrap gap-2">
+              {['AutoCAD', 'Civil 3D', 'ProtaStructure', 'Revit', 'Tekla Structures', 'Orion', 'MS Office'].map((tool) => (
+                <span key={tool} className="px-3 py-1.5 bg-blue-50 text-blue-700 rounded-full text-sm font-medium border border-blue-100">
+                  {tool}
+                </span>
+              ))}
+            </div>
+          </section>
 
-      {/* Key Strengths */}
-      <section style={{ marginBottom: '1.5rem' }}>
-        <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#1e3a8a', borderBottom: '2px solid #d1d5db', paddingBottom: '0.25rem', marginBottom: '0.75rem' }}>
-          KEY PROFESSIONAL STRENGTHS
-        </h2>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
-          <ul style={{ color: '#374151', paddingLeft: '1.25rem' }}>
-            <li>Self-motivated and target-oriented</li>
-            <li>Excellent leadership and managerial skills</li>
-            <li>Strong communication and relationship management</li>
-            <li>Effective multitasking and team collaboration</li>
-          </ul>
-          <ul style={{ color: '#374151', paddingLeft: '1.25rem' }}>
-            <li>Work under pressure with minimal supervision</li>
-            <li>High level of integrity and transparency</li>
-            <li>Strong adherence to policies and procedures</li>
-            <li>Advanced computer literacy</li>
-          </ul>
-        </div>
-      </section>
+          {/* Experience */}
+          <section id="experience" className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 scroll-mt-24">
+            <h2 className="text-lg font-bold text-slate-900 mb-6 flex items-center gap-2">
+              <Building2 size={18} className="text-blue-600" />
+              Professional Experience
+            </h2>
+            <div className="space-y-6">
+              {[
+                {
+                  role: "Civil / Structural Engineer",
+                  period: "2021 – 2022",
+                  company: "Under Engr. Ularam Bello",
+                  duties: [
+                    "Supervised residential and commercial construction projects ensuring adherence to approved structural drawings",
+                    "Conducted quality control inspections and ensured compliance with safety standards and building codes",
+                    "Coordinated with contractors, architects, and other professionals for seamless project execution",
+                    "Managed site activities and resolved technical challenges during construction phases"
+                  ]
+                },
+                {
+                  role: "Lecturer, Civil Engineering Department",
+                  period: "2022",
+                  company: "Modibbo Adama University, Yola",
+                  duties: [
+                    "Delivered undergraduate courses in civil and structural engineering",
+                    "Supervised academic projects and integrated industry-based case studies into curriculum",
+                    "Mentored students on practical engineering applications and professional development"
+                  ]
+                }
+              ].map((job, idx) => (
+                <div key={idx} className="border-l-2 border-blue-200 pl-4 pb-2">
+                  <div className="flex flex-wrap items-baseline gap-2 mb-2">
+                    <h4 className="font-semibold text-slate-900">{job.role}</h4>
+                    <span className="text-sm text-slate-500">{job.period}</span>
+                  </div>
+                  <p className="text-sm text-blue-600 font-medium mb-3">{job.company}</p>
+                  <ul className="space-y-1.5">
+                    {job.duties.map((duty, i) => (
+                      <li key={i} className="text-sm text-slate-700 flex gap-2">
+                        <span className="text-blue-400">•</span>
+                        {duty}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </section>
 
-      {/* Languages */}
-      <section style={{ marginBottom: '1.5rem' }}>
-        <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#1e3a8a', borderBottom: '2px solid #d1d5db', paddingBottom: '0.25rem', marginBottom: '0.75rem' }}>
-          LANGUAGES
-        </h2>
-        <p style={{ color: '#374151' }}>
-          <strong>English:</strong> Professional Proficiency | <strong>Hausa:</strong> Native Proficiency
-        </p>
-      </section>
+          {/* Selected Projects */}
+          <section id="projects" className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 scroll-mt-24">
+            <h2 className="text-lg font-bold text-slate-900 mb-6 flex items-center gap-2">
+              <Hammer size={18} className="text-blue-600" />
+              Selected Structural Projects
+            </h2>
+            
+            <div className="space-y-6">
+              <div>
+                <h4 className="font-semibold text-slate-900 mb-3">Large-Scale Estate Developments (2023 – 2025)</h4>
+                <ul className="space-y-2">
+                  {[
+                    "Hasiya Court Estate – 121 units of 4-bedroom duplexes with BQ (2025)",
+                    "Hilltop Hillcrest Estate, Katampe, Abuja – multiple duplex prototypes (2025)",
+                    "Rome Estate I & II for Dan Mama Smart Homes Ltd (2024)",
+                    "Boulevard Estate for Dan Mama Smart Homes Ltd (2023)",
+                    "Dan Mama Smart City master planning, site layout, estate road design (2025)"
+                  ].map((project, i) => (
+                    <li key={i} className="text-sm text-slate-700 flex gap-2">
+                      <CheckCircle size={14} className="text-green-500 flex-shrink-0 mt-0.5" />
+                      {project}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              
+              <div>
+                <h4 className="font-semibold text-slate-900 mb-3">Residential & Commercial (2021 – 2025)</h4>
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                  {[
+                    "Hotel development supervision, Maraba – 12-bedroom hotel (2021)",
+                    "Terrace duplex structural design (3 units), Anambra State (2025)",
+                    "Elm Villa duplex prototype for Dan Mama Smart Homes (2024)",
+                    "Guest chalet & 2-bedroom BQ, Kabusa Garden Estate, Abuja (2021–2022)"
+                  ].map((project, i) => (
+                    <li key={i} className="text-sm text-slate-700 flex gap-2">
+                      <span className="text-blue-400">▹</span>
+                      {project}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </section>
 
-      {/* Personal Information */}
-      <section>
-        <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#1e3a8a', borderBottom: '2px solid #d1d5db', paddingBottom: '0.25rem', marginBottom: '0.75rem' }}>
-          PERSONAL INFORMATION
-        </h2>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', color: '#374151' }}>
-          <div>
-            <p><strong>Date of Birth:</strong> 27th August, 1996</p>
-            <p><strong>Nationality:</strong> Nigerian</p>
-            <p><strong>State of Origin:</strong> Adamawa State</p>
-          </div>
-          <div>
-            <p><strong>Gender:</strong> Male</p>
-            <p><strong>Marital Status:</strong> Single</p>
-            <p><strong>Religion:</strong> Christianity</p>
-          </div>
-        </div>
-      </section>
+          {/* Education & Certifications */}
+          <section id="education" className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+              <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <GraduationCap size={18} className="text-blue-600" />
+                Education
+              </h3>
+              <div className="space-y-4">
+                <div>
+                  <p className="font-semibold text-slate-900">B.Eng. Civil Engineering</p>
+                  <p className="text-sm text-blue-600">Modibbo Adama University of Technology, Yola</p>
+                  <p className="text-sm text-slate-600">Second Class Upper Division (Honours) • 2020</p>
+                </div>
+                <div>
+                  <p className="font-semibold text-slate-900">WAEC</p>
+                  <p className="text-sm text-slate-600">Yangal Academic, Jalingo • 2014</p>
+                </div>
+              </div>
+            </div>
+
+            <div id="certifications" className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 scroll-mt-24">
+              <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <Award size={18} className="text-blue-600" />
+                Certifications
+              </h3>
+              <ul className="space-y-2">
+                {[
+                  "COREN Registration – Council for Regulation of Engineering in Nigeria (Jan 2025)",
+                  "Hedera Hashgraph Developer Certificate (2025)",
+                  "Unit Masters Certificate in Blockchain & Cryptocurrency (Nov 2022)",
+                  "Certificate of Participation in DeFi – University of Nicosia (2021)",
+                  "Fundamentals of Digital Marketing – Google (2022)"
+                ].map((cert, i) => (
+                  <li key={i} className="text-sm text-slate-700 flex gap-2">
+                    <Award size={14} className="text-amber-500 flex-shrink-0 mt-0.5" />
+                    {cert}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+
+          {/* Languages & Personal */}
+          <section className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+            <h3 className="text-lg font-bold text-slate-900 mb-4">Additional Information</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+              <div>
+                <p className="font-medium text-slate-900 mb-2">Languages</p>
+                <div className="space-y-1">
+                  <p><span className="text-slate-600">English:</span> Professional Proficiency</p>
+                  <p><span className="text-slate-600">Hausa:</span> Native Proficiency</p>
+                </div>
+              </div>
+              <div>
+                <p className="font-medium text-slate-900 mb-2">Personal</p>
+                <div className="space-y-1 text-slate-600">
+                  <p>Nigerian National • Adamawa State of Origin</p>
+                  <p>DOB: 27 August 1996</p>
+                </div>
+              </div>
+            </div>
+            <p className="text-xs text-slate-500 mt-6 pt-4 border-t border-slate-100">
+              References available upon request
+            </p>
+          </section>
+
+        </section>
+      </main>
 
       {/* Footer */}
-      <div style={{ marginTop: '2rem', paddingTop: '1rem', borderTop: '2px solid #d1d5db', textAlign: 'center', fontSize: '0.875rem', color: '#4b5563' }}>
-        <p>References available upon request</p>
-      </div>
+      <footer className="bg-white border-t border-slate-200 mt-12 py-6">
+        <div className="max-w-6xl mx-auto px-4 text-center text-sm text-slate-600">
+          <p>© {new Date().getFullYear()} Engr. Mikailu Samuel Nadro • COREN Registered Structural Engineer</p>
+          <p className="mt-1">Last Updated: {new Date().toLocaleDateString('en-NG', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+        </div>
+      </footer>
     </div>
   );
 }
