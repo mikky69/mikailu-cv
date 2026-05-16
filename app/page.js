@@ -123,6 +123,31 @@ export default function CV() {
 
   return (
     <div style={{ minHeight: "100vh", background: "#f0f3f8", fontFamily: "'Barlow', sans-serif" }}>
+      <style>{`
+        /* ── Mobile layout ── */
+        @media (max-width: 768px) {
+          .cv-body        { flex-direction: column !important; padding: 16px !important; }
+          .cv-sidebar     { width: 100% !important; max-width: 100% !important; }
+          .cv-header-nav  { display: none !important; }
+          .cv-header-inner{ gap: 8px !important; }
+          .cv-stats-grid  { grid-template-columns: repeat(3,1fr) !important; gap: 8px !important; }
+          .cv-stats-grid p:first-child { font-size: 1.4rem !important; }
+          .cv-stats-grid p:last-child  { font-size: 0.5rem !important; }
+          .cv-divider-label { font-size: 0.5rem !important; white-space: normal !important; text-align: center; }
+          .cv-proj-grid   { grid-template-columns: 1fr !important; }
+          .cv-cert-grid   { grid-template-columns: 1fr !important; }
+          .cv-card        { padding: 18px !important; }
+          .cv-section-h2  { font-size: 1.15rem !important; }
+          .cv-profile-avatar { width: 72px !important; height: 72px !important; font-size: 1.2rem !important; }
+          .cv-contact-card-top { padding: 24px 18px 32px !important; }
+          .cv-personal-row { flex-direction: column !important; align-items: flex-start !important; }
+          body { padding-bottom: 72px; }
+        }
+        @media (max-width: 480px) {
+          .cv-header-download span { display: none; }
+          .cv-stats-grid p:first-child { font-size: 1.2rem !important; }
+        }
+      `}</style>
 
       {/* ── STICKY HEADER ── */}
       <header style={{
@@ -133,7 +158,7 @@ export default function CV() {
         <div style={{
           maxWidth: "1152px", margin: "0 auto", padding: "12px 20px",
           display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "12px",
-        }}>
+        }} className="cv-header-inner">
           <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
             <div style={{
               width: "40px", height: "40px", borderRadius: "8px",
@@ -152,7 +177,7 @@ export default function CV() {
             </div>
           </div>
 
-          <nav style={{ display: "flex", alignItems: "center", gap: "4px", flexWrap: "wrap" }}>
+          <nav style={{ display: "flex", alignItems: "center", gap: "4px", flexWrap: "wrap" }} className="cv-header-nav">
             {NAV.map(({ id, label }) => (
               <button key={id}
                 onClick={() => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })}
@@ -183,10 +208,10 @@ export default function CV() {
       </header>
 
       {/* ── BODY ── */}
-      <div style={{ maxWidth: "1152px", margin: "0 auto", padding: "32px 16px", display: "flex", gap: "28px", flexWrap: "wrap" }}>
+      <div style={{ maxWidth: "1152px", margin: "0 auto", padding: "32px 16px", display: "flex", gap: "28px", flexWrap: "wrap" }} className="cv-body">
 
         {/* ════════ SIDEBAR ════════ */}
-        <aside style={{ width: "100%", maxWidth: "272px", flexShrink: 0, display: "flex", flexDirection: "column", gap: "20px" }}>
+        <aside style={{ width: "100%", maxWidth: "272px", flexShrink: 0, display: "flex", flexDirection: "column", gap: "20px" }} className="cv-sidebar">
 
           {/* Profile card */}
           <div style={{ borderRadius: "12px", overflow: "hidden", boxShadow: "0 4px 20px rgba(11,31,58,0.18)" }}>
@@ -194,7 +219,7 @@ export default function CV() {
             <div style={{
               position: "relative", padding: "32px 24px 40px", textAlign: "center",
               background: "#0b1f3a",
-            }}>
+            }} className="cv-contact-card-top">
               <div style={{
                 position: "absolute", inset: 0, opacity: 1,
                 backgroundImage: "linear-gradient(rgba(107,158,199,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(107,158,199,0.07) 1px, transparent 1px)",
@@ -209,7 +234,7 @@ export default function CV() {
                 border: "4px solid #c49a2a", boxShadow: "0 0 0 4px rgba(196,154,42,0.15)",
                 display: "flex", alignItems: "center", justifyContent: "center",
                 fontFamily: "'Crimson Pro', serif", fontSize: "1.6rem", fontWeight: 700, color: "#c49a2a",
-              }}>MN</div>
+              }} className="cv-profile-avatar">MN</div>
 
               <h2 style={{ position: "relative", fontFamily: "'Crimson Pro', serif", fontSize: "1.2rem", fontWeight: 700, color: "white", margin: "0 0 4px" }}>
                 Mikailu S. Nadro
@@ -317,7 +342,7 @@ export default function CV() {
         <main style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", gap: "24px" }}>
 
           {/* Profile */}
-          <div id="profile" style={{ background: "white", borderRadius: "12px", padding: "28px", border: "1px solid #e5e9ef", boxShadow: "0 2px 12px rgba(11,31,58,0.06)", scrollMarginTop: "80px" }}>
+          <div id="profile" style={{ background: "white", borderRadius: "12px", padding: "28px", border: "1px solid #e5e9ef", boxShadow: "0 2px 12px rgba(11,31,58,0.06)", scrollMarginTop: "80px" }} className="cv-card">
             <SectionHeading Icon={User}>Professional Profile</SectionHeading>
             <p style={{ fontSize: "0.92rem", color: "#475569", lineHeight: 1.75, margin: "0 0 24px" }}>
               COREN-registered Structural Engineer with comprehensive experience in structural design,
@@ -327,7 +352,7 @@ export default function CV() {
               standards. Proven track record of delivering complex projects while maintaining high quality
               standards and meeting tight deadlines.
             </p>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "16px", paddingTop: "20px", borderTop: "1px solid #f0f3f8" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "16px", paddingTop: "20px", borderTop: "1px solid #f0f3f8" }} className="cv-stats-grid">
               {[
                 { value: "4+",  label: "Years Experience" },
                 { value: "15+", label: "Projects Delivered" },
@@ -342,7 +367,7 @@ export default function CV() {
           </div>
 
           {/* Experience */}
-          <div id="experience" style={{ background: "white", borderRadius: "12px", padding: "28px", border: "1px solid #e5e9ef", boxShadow: "0 2px 12px rgba(11,31,58,0.06)", scrollMarginTop: "80px" }}>
+          <div id="experience" style={{ background: "white", borderRadius: "12px", padding: "28px", border: "1px solid #e5e9ef", boxShadow: "0 2px 12px rgba(11,31,58,0.06)", scrollMarginTop: "80px" }} className="cv-card">
             <SectionHeading Icon={Briefcase}>Professional Experience</SectionHeading>
             <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
               {EXPERIENCE.map((job, idx) => (
@@ -372,7 +397,7 @@ export default function CV() {
           </div>
 
           {/* Projects */}
-          <div id="projects" style={{ background: "white", borderRadius: "12px", padding: "28px", border: "1px solid #e5e9ef", boxShadow: "0 2px 12px rgba(11,31,58,0.06)", scrollMarginTop: "80px" }}>
+          <div id="projects" style={{ background: "white", borderRadius: "12px", padding: "28px", border: "1px solid #e5e9ef", boxShadow: "0 2px 12px rgba(11,31,58,0.06)", scrollMarginTop: "80px" }} className="cv-card">
             <SectionHeading Icon={Layers}>Selected Structural Projects</SectionHeading>
 
             <div style={{ marginBottom: "24px" }}>
@@ -399,7 +424,7 @@ export default function CV() {
                 <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.58rem", letterSpacing: "0.1em", color: "#94a3b8", whiteSpace: "nowrap" }}>RESIDENTIAL & COMMERCIAL — 2021–2025</span>
                 <div style={{ flex: 1, height: "1px", background: "#f0f3f8" }} />
               </div>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: "8px" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: "8px" }} className="cv-proj-grid">
                 {PROJECTS_RESIDENTIAL.map((p, i) => (
                   <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: "10px", padding: "12px", borderRadius: "8px", background: "#f8fafc", border: "1px solid #e5e9ef" }}>
                     <ChevronRight size={13} style={{ flexShrink: 0, marginTop: "2px" }} color="#c49a2a" />
@@ -411,7 +436,7 @@ export default function CV() {
           </div>
 
           {/* Education */}
-          <div id="education" style={{ background: "white", borderRadius: "12px", padding: "28px", border: "1px solid #e5e9ef", boxShadow: "0 2px 12px rgba(11,31,58,0.06)", scrollMarginTop: "80px" }}>
+          <div id="education" style={{ background: "white", borderRadius: "12px", padding: "28px", border: "1px solid #e5e9ef", boxShadow: "0 2px 12px rgba(11,31,58,0.06)", scrollMarginTop: "80px" }} className="cv-card">
             <SectionHeading Icon={GraduationCap}>Education</SectionHeading>
             <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
               {[
@@ -436,9 +461,9 @@ export default function CV() {
           </div>
 
           {/* Certifications */}
-          <div id="certifications" style={{ background: "white", borderRadius: "12px", padding: "28px", border: "1px solid #e5e9ef", boxShadow: "0 2px 12px rgba(11,31,58,0.06)", scrollMarginTop: "80px" }}>
+          <div id="certifications" style={{ background: "white", borderRadius: "12px", padding: "28px", border: "1px solid #e5e9ef", boxShadow: "0 2px 12px rgba(11,31,58,0.06)", scrollMarginTop: "80px" }} className="cv-card">
             <SectionHeading Icon={Award}>Certifications &amp; Professional Development</SectionHeading>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: "10px" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: "10px" }} className="cv-cert-grid">
               {CERTIFICATIONS.map((cert, i) => (
                 <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: "12px", padding: "14px", borderRadius: "10px", background: "#f8fafc", border: "1px solid #e5e9ef" }}>
                   <div style={{ width: "32px", height: "32px", borderRadius: "8px", flexShrink: 0, background: i === 0 ? "rgba(196,154,42,0.15)" : "#f0f3f8", border: i === 0 ? "1px solid rgba(196,154,42,0.3)" : "1px solid #e2e8f0", display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -456,7 +481,7 @@ export default function CV() {
 
           {/* Personal */}
           <div style={{ background: "white", borderRadius: "12px", padding: "28px", border: "1px solid #e5e9ef", boxShadow: "0 2px 12px rgba(11,31,58,0.06)" }}>
-            <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "flex-end", gap: "16px" }}>
+            <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "flex-end", gap: "16px" }} className="cv-personal-row">
               <div>
                 <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.62rem", letterSpacing: "0.1em", color: "#c49a2a", margin: "0 0 10px" }}>PERSONAL DETAILS</p>
                 <div style={{ fontSize: "0.84rem", color: "#475569", lineHeight: 2 }}>
@@ -474,6 +499,38 @@ export default function CV() {
 
         </main>
       </div>
+
+      {/* ── MOBILE BOTTOM NAV ── */}
+      <nav style={{ display: "none" }} className="cv-mobile-nav">
+        <style>{`
+          @media (max-width: 768px) {
+            .cv-mobile-nav {
+              display: flex !important;
+              position: fixed;
+              bottom: 0; left: 0; right: 0;
+              background: #0b1f3a;
+              border-top: 1px solid rgba(196,154,42,0.3);
+              z-index: 100;
+              justify-content: space-around;
+              padding: 8px 4px 12px;
+            }
+          }
+        `}</style>
+        {NAV.map(({ id, label, Icon }) => (
+          <button key={id}
+            onClick={() => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })}
+            style={{
+              display: "flex", flexDirection: "column", alignItems: "center", gap: "3px",
+              background: "none", border: "none", cursor: "pointer",
+              color: active === id ? "#c49a2a" : "#6b9ec7",
+              fontFamily: "'DM Mono', monospace", fontSize: "0.5rem", letterSpacing: "0.05em",
+              padding: "4px 8px",
+            }}>
+            <Icon size={16} />
+            {label.toUpperCase()}
+          </button>
+        ))}
+      </nav>
 
       {/* ── FOOTER ── */}
       <footer style={{ background: "white", borderTop: "1px solid #dde2ea", marginTop: "24px", padding: "20px 16px" }}>
